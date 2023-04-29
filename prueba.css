@@ -1,6 +1,6 @@
 .min-flex{
     display: flex;
-    align-items: : center;
+    align-items: center;
     justify-content: center;
 }
 .btn{
@@ -14,18 +14,17 @@
     height: 100vh
 }
 
-.Display{
+.display{
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     overflow: hidden;
-    height: 50px;
+    height: 60px;
 }
 
 
 @media screen and (max-width:800px){
     .cont-general{
-    height 100%
+    height: 100%;
     }
 }
-

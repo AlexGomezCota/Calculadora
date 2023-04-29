@@ -3,7 +3,7 @@ class Display {
         this.displayValorAnterior = displayValorAnterior;
         this.displayValorActual = displayValorActual;
         this.calculadora = new Calculator();
-        this.operacion = undefined;
+        this.operador = undefined;
         this.valorActual = "";
         this.valorAnterior = "";
         this.signos = {
@@ -19,50 +19,48 @@ class Display {
         }
     }
 
-    addNumber(numero) {
-        if (numero === "." && this.valorActual.includes(".")) return      
+    addNumber(numero){
+        if (numero === '.' && this.valorActual.includes('.')) return
         this.valorActual = this.valorActual.toString() + numero.toString();
         this.printValues();
     }
 
-    printValues() {
+    printValues(){
         this.displayValorActual.textContent = this.valorActual;
-        this.displayValorAnterior.textContent = `${this.valorAnterior} ${this.signos[this.operador] || this.advanceSignos[this.operador] || "" }`;
+        this.displayValorAnterior.textContent = `${this.valorAnterior} ${this.signos[this.operador] || this.advancedSignos[this.operador] || ''}`;
     }
-
 
     deleteValue(){
         this.valorActual = this.valorActual.toString().slice(0, -1);
         this.printValues();
-}
+    }
 
     deleteAll(){
-        this.valorActual = "";
-        this.valorAnterior = "";
-        this.operador = undefined
+        this.valorActual = '';
+        this.valorAnterior = '';
+        this.operador = undefined;
         this.printValues();
     }
-    computar(tipo){ 
-        this.operador !== "igual" && this.calcular(this.verificador);
+    computar(tipo){
+        this.operador !== 'igual' && this.calcular(this.verificador);
         this.operador = tipo;
-        if(this.operador in this.signos){
+        if (this.operador in this.signos){
             this.operacion = this.signos[this.operador];
-            this.verificador = "basic_operar";
+            this.verificador = 'basic_operar';
         }
-        if(this.operador in this.advancedSignos){
+        if (this.operador in this.advancedSignos){
             this.operacion = this.operador;
-            this.verificador = "advanced_operar";
+            this.verificador = 'advanced_operar';
         }
         this.valorAnterior = this.valorActual || this.valorAnterior;
-        this.valorActual="";
+        this.valorActual='';
         this.printValues();
     }
+
     calcular(x){
         this.funcion = x;
-        if((this.valorAnterior !== "") && (this.valorActual !== "")){
+        if((this.valorAnterior !== '')&&(this.valorActual !=='')){
             this.valorActual = this.calculadora[this.funcion](this.valorAnterior, this.valorActual, this.operacion);
         }
     }
-
-
 }
