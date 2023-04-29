@@ -3,7 +3,6 @@ const displayValorActual = document.getElementById("valor-actual");
 const botonesNumero = document.querySelectorAll(".numero")
 const botonesOperador = document.querySelectorAll(".operador")
 
-
 const display = new Display(displayValorAnterior, displayValorActual);
 
 botonesNumero.forEach(boton => {
